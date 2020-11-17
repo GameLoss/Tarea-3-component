@@ -7,7 +7,6 @@ interface IDataResponse{
   date: number;
   month: string;
   year: number;
-  uh: string;
   hour: number;
   minute: number;
   second: number;
@@ -33,11 +32,13 @@ interface IApiResponse{
 export class TimeWidgetComponent implements OnInit {
 
   TimeData: IDataResponse;
+  firstSec: boolean=false;
   constructor() { }
 
   ngOnInit() {
     this.TimeData=<IDataResponse>{};
     this.getTimeData("America/Mexico_City");
+    this.countSeconds();
   }
 
   
@@ -54,10 +55,13 @@ export class TimeWidgetComponent implements OnInit {
       this.TimeData.day=this.getDayName(dtDate.getDay());
       this.TimeData.date=dtDate.getDate();
       this.TimeData.month=this.getMonthName(dtDate.getMonth()+1);
-      this.TimeData.uh=dtDate.toLocaleDateString();
       this.TimeData.hour=dtDate.getHours();
       this.TimeData.minute=dtDate.getMinutes();
-      this.TimeData.second=dtDate.getSeconds();
+      if(!this.firstSec){
+        this.TimeData.second=dtDate.getSeconds();
+        this.firstSec=true;
+      }
+      
       this.TimeData.timeZone=data.effectiveTimeZoneShort;
 
     });
@@ -135,5 +139,21 @@ export class TimeWidgetComponent implements OnInit {
     return monthName;
   }
 
+  countSeconds(){
+    setInterval(() => {
+      this.TimeData.second++;
+      if(this.TimeData.second == 60){
+        this.TimeData.minute++;
+        if(this.TimeData.minute==60){
+          this.TimeData.minute=0;
+          this.TimeData.hour++;
+          if(this.TimeData.hour==24){
+            this.TimeData.hour=0;
+          }
+        }
+        this.TimeData.second=0;
+      } 
+    }, 1000)
+  }
 
 }

@@ -1,33 +1,38 @@
 <div>
-  <p>{{TimeData.hour}}:{{TimeData.minute}}.{{TimeData.second}}</p>
-  <p>{{TimeData.day}} {{TimeData.date}} de {{TimeData.month}}</p>
-  <br>
-  {{TimeData.uh}}
-  <br>
-  <br>
-  <ion-item>
-      <!-- <ion-label>Zona Horaria</ion-label> -->
-      <ion-select placeholder="País" interface="popover" [(ngModel)]="value" (ionChange)="getTimeData(value);">
-        <ion-select-option value="Europe/Athens">Atenas</ion-select-option>
-        <ion-select-option value="Europe/Berlin">Berlin</ion-select-option>
-        <ion-select-option value="America/Buenos_Aires">Buenos Aires</ion-select-option>
-        <ion-select-option value="Africa/Cairo">Cairo</ion-select-option>
-        <ion-select-option value="America/Mexico_City">Ciudad de México</ion-select-option>
-        <ion-select-option value="Asia/Dubai">Dubai</ion-select-option>
-        <ion-select-option value="Europe/Stockholm">Estocolmo</ion-select-option>
-        <ion-select-option value="GreenWich">GreenWich</ion-select-option>
-        <ion-select-option value="Asia/Hong_Kong">Hong Kong</ion-select-option>
-        <ion-select-option value="Asia/Jerusalem">Jerusalén</ion-select-option>
-        <ion-select-option value="Europe/London">Londres</ion-select-option>
-        <ion-select-option value="Europe/Madrid">Madrid</ion-select-option>
-        <ion-select-option value="Europe/Moscow">Moscú</ion-select-option>
-        <ion-select-option value="America/New_York">Nueva York</ion-select-option>
-        <ion-select-option value="Europe/Paris">Paris</ion-select-option>
-        <ion-select-option value="Europe/Rome">Roma</ion-select-option>
-        <ion-select-option value="Brazil/East">Rio de Janeiro</ion-select-option>
-        <ion-select-option value="Asia/Seoul">Seúl</ion-select-option>
-        <ion-select-option value="Australia/Sydney">Sydney</ion-select-option>
-        <ion-select-option value="Asia/Tokyo">Tokyo</ion-select-option>
-      </ion-select>
-  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>{{TimeData.hour}}:{{TimeData.minute}}:{{TimeData.second}}</h1>
+        <h3>{{TimeData.timeZone}}</h3>
+        <h3>{{TimeData.day}} {{TimeData.date}} de {{TimeData.month}}</h3>
+        <ion-item>
+          <ion-label>Zona</ion-label>
+          <ion-select [(ngModel)]="value" placeholder="Ciudad de México" interface="popover" (ionChange)="getTimeData(value);">
+            <ion-select-option value="Europe/Athens">Atenas</ion-select-option>
+            <ion-select-option value="Europe/Berlin">Berlin</ion-select-option>
+            <ion-select-option value="America/Buenos_Aires">Buenos Aires</ion-select-option>
+            <ion-select-option value="Africa/Cairo">Cairo</ion-select-option>
+            <ion-select-option value="America/Mexico_City">Ciudad de México</ion-select-option>
+            <ion-select-option value="Asia/Dubai">Dubai</ion-select-option>
+            <ion-select-option value="Europe/Stockholm">Estocolmo</ion-select-option>
+            <ion-select-option value="GreenWich">GreenWich</ion-select-option>
+            <ion-select-option value="Asia/Hong_Kong">Hong Kong</ion-select-option>
+            <ion-select-option value="Asia/Jerusalem">Jerusalén</ion-select-option>
+            <ion-select-option value="Europe/London">Londres</ion-select-option>
+            <ion-select-option value="Europe/Madrid">Madrid</ion-select-option>
+            <ion-select-option value="Europe/Moscow">Moscú</ion-select-option>
+            <ion-select-option value="America/New_York">Nueva York</ion-select-option>
+            <ion-select-option value="Europe/Paris">Paris</ion-select-option>
+            <ion-select-option value="Europe/Rome">Roma</ion-select-option>
+            <ion-select-option value="Brazil/East">Rio de Janeiro</ion-select-option>
+            <ion-select-option value="Asia/Seoul">Seúl</ion-select-option>
+            <ion-select-option value="Australia/Sydney">Sydney</ion-select-option>
+            <ion-select-option value="Asia/Tokyo">Tokyo</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 </div>

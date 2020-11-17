@@ -1,11 +1,10 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       WorldClockApi
     </ion-title>
   </ion-toolbar>
-</ion-header>
-
+</ion-header> -->
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -13,13 +12,27 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <app-time-widget></app-time-widget>
-    <br>
-    <br>
-    <app-time-widget></app-time-widget>
-    <br>
-    <br>
-    <app-time-widget></app-time-widget>
+    <ion-fab vertical="top" horizontal="end" slot="fixed" style="display: inline" id="fabBtn">
+      <ion-fab-button (click)="addRow()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <div id="container">
+  
+    <ion-grid>
+      <ion-row *ngFor="let element of array">
+        <ion-col size-lg="4" size-md="4" size-sm="12" size-xs="12">
+          <app-time-widget></app-time-widget>
+        </ion-col>
+        <ion-col size-lg="4" size-md="4" size-sm="12" size-xs="12">
+          <app-time-widget></app-time-widget>
+        </ion-col>
+        <ion-col size-lg="4" size-md="4" size-sm="12" size-xs="12">
+          <app-time-widget></app-time-widget>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
   </div>
 </ion-content>
